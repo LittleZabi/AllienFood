@@ -3,47 +3,31 @@ const Stars = ({ rating }) => {
     return (
         <div className="stars--div">
             {
-                rating > 0 && rating < 0.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
+                <span>
+                    <i className={rating >= 1 ? "fa fa-star" : rating >= 0.5 ? "fa fa-star-half" : "fa fa-star-o"}></i>
                 </span>
             }
             {
-                rating > 1 && rating < 1.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
+                <span>
+                    <i className={rating >= 2 ? "fa fa-star" : rating >= 1.5 ? "fa fa-star-half" : "fa fa-star-o"}></i>
                 </span>
             }
             {
-                rating > 2 && rating < 2.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
+                <span>
+                    <i className={rating >= 3 ? "fa fa-star" : rating >= 2.5 ? "fa fa-star-half" : "fa fa-star-o"}></i>
                 </span>
             }
             {
-                rating > 3 && rating < 3.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
+                <span>
+                    <i className={rating >= 4 ? "fa fa-star" : rating >= 3.5 ? "fa fa-star-half" : "fa fa-star-o"}></i>
                 </span>
             }
             {
-                rating > 4 && rating < 4.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
+                <span>
+                    <i className={rating >= 5 ? "fa fa-star" : rating >= 4.5 ? "fa fa-star-half" : "fa fa-star-o"}></i>
                 </span>
             }
-            {/* {
-                rating > 5 && rating < 5.6 ? <span>
-                    <i className="fa fa-star-half"></i>
-                </span> : <span>
-                    <i className="fa fa-star"></i>
-                </span>
-            } */}
+            <span className="rating-text">{rating}</span>
         </div>
     )
 }
