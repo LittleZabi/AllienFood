@@ -1,19 +1,20 @@
 import Stars from "./stars"
 
-const RenderItem = ({ item, bgColor }) => {
+import { Link } from "react-router-dom";
+const RenderItem = ({ item, bgColor, index }) => {
     return (
-        <div key={item.id} className="card">
-            <a className="image-sec" href={`product/${item["id"]}/${item["name"]}`}>
+        <div className="card fading" style={{ animationDelay: index * 100 + 'ms' }}>
+            <Link className="image-sec" to={`/product/${item["id"]}/${item["name"]}`}>
                 <img
                     className="medium"
                     src={"/images/" + item["image"]}
                     alt={item["name"]}
                 />
-            </a>
+            </Link>
             <div className="card-body">
-                <a href={`product/${item["id"]}/${item["name"]}`}>
+                <Link to={`/product/${item["id"]}/${item["name"]}`}>
                     <h2>{item["name"].replace("-", " ")}</h2>
-                </a>
+                </Link>
                 {<Stars rating={item["rating"]} />}
                 <div className="price">
                     <span>

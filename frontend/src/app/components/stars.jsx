@@ -1,5 +1,4 @@
 const Stars = ({ rating }) => {
-    console.log(rating)
     return (
         <div className="stars--div">
             {

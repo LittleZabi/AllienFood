@@ -1,0 +1,27 @@
+body {
+  background: rgb(31, 20, 61) !important;
+  color: white !important;
+}
+.App {
+  padding: 30px;
+  font-size: 22px;
+  font-family: consolas;
+  text-align: center;
+  margin: auto;
+}
+article {
+  padding: 5px;
+  margin: 10px;
+  background: rgb(67, 29, 105);
+  border-radius: 5px;
+}
+.linter {
+  font-size: 11px;
+}
+.linter > span {
+  background: rgb(41, 17, 95);
+  padding: 5px 10px;
+  margin: 10px 5px;
+  display: inline-block;
+  border-radius: 5px;
+}
