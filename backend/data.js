@@ -10,6 +10,7 @@ const data = [
     favorite: 1,
     rating: "1.0",
     price: 156,
+    quantity: 32,
   },
   {
     id: 1,
@@ -22,6 +23,7 @@ const data = [
     favorite: 0,
     rating: "3.1",
     price: 112,
+    quantity: 12,
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ const data = [
     favorite: 1,
     rating: "1.4",
     price: 34,
+    quantity: 10,
   },
   {
     id: 3,
@@ -46,6 +49,7 @@ const data = [
     favorite: 0,
     rating: "4.0",
     price: 29,
+    quantity: 12,
   },
   {
     id: 4,
@@ -58,6 +62,7 @@ const data = [
     favorite: 1,
     rating: "1.7",
     price: 157,
+    quantity: 13,
   },
   {
     id: 5,
@@ -70,6 +75,7 @@ const data = [
     favorite: 1,
     rating: "0.7",
     price: 109,
+    quantity: 14,
   },
   {
     id: 6,
@@ -82,6 +88,7 @@ const data = [
     favorite: 0,
     rating: "4.5",
     price: 145,
+    quantity: 10,
   },
   {
     id: 7,
@@ -94,6 +101,7 @@ const data = [
     favorite: 0,
     rating: "1.3",
     price: 137,
+    quantity: 10,
   },
   {
     id: 8,
@@ -106,6 +114,7 @@ const data = [
     favorite: 0,
     rating: "0.9",
     price: 63,
+    quantity: 10,
   },
   {
     id: 9,
@@ -118,6 +127,7 @@ const data = [
     favorite: 1,
     rating: "0.5",
     price: 193,
+    quantity: 10,
   },
   {
     id: 10,
@@ -130,6 +140,7 @@ const data = [
     favorite: 1,
     rating: "2.9",
     price: 39,
+    quantity: 67,
   },
   {
     id: 11,
@@ -142,6 +153,7 @@ const data = [
     favorite: 0,
     rating: "4.1",
     price: 143,
+    quantity: 23,
   },
   {
     id: 12,
@@ -154,6 +166,7 @@ const data = [
     favorite: 0,
     rating: "0.3",
     price: 95,
+    quantity: 42,
   },
   {
     id: 13,
@@ -166,6 +179,7 @@ const data = [
     favorite: 0,
     rating: "1.2",
     price: 14,
+    quantity: 32,
   },
   {
     id: 14,
@@ -178,6 +192,7 @@ const data = [
     favorite: 1,
     rating: "4.1",
     price: 66,
+    quantity: 10,
   },
   {
     id: 15,
@@ -190,6 +205,7 @@ const data = [
     favorite: 1,
     rating: "4.3",
     price: 113,
+    quantity: 6,
   },
   {
     id: 16,
@@ -202,6 +218,7 @@ const data = [
     favorite: 0,
     rating: "4.5",
     price: 71,
+    quantity: 76,
   },
   {
     id: 17,
@@ -214,6 +231,7 @@ const data = [
     favorite: 1,
     rating: "0.5",
     price: 153,
+    quantity: 3,
   },
   {
     id: 18,
@@ -226,6 +244,7 @@ const data = [
     favorite: 1,
     rating: "3.8",
     price: 157,
+    quantity: 10,
   },
   {
     id: 19,
@@ -238,6 +257,7 @@ const data = [
     favorite: 0,
     rating: "1.8",
     price: 132,
+    quantity: 7,
   },
   {
     id: 20,
@@ -250,6 +270,7 @@ const data = [
     favorite: 1,
     rating: "3.1",
     price: 26,
+    quantity: 3,
   },
   {
     id: 21,
@@ -262,6 +283,7 @@ const data = [
     favorite: 1,
     rating: "4.6",
     price: 57,
+    quantity: 6,
   },
   {
     id: 22,
@@ -274,6 +296,7 @@ const data = [
     favorite: 0,
     rating: "4.5",
     price: 34,
+    quantity: 14,
   },
   {
     id: 23,
@@ -286,6 +309,7 @@ const data = [
     favorite: 0,
     rating: "2.0",
     price: 59,
+    quantity: 18,
   },
   {
     id: 24,
@@ -298,6 +322,7 @@ const data = [
     favorite: 0,
     rating: "0.2",
     price: 121,
+    quantity: 11,
   },
   {
     id: 25,
@@ -310,6 +335,7 @@ const data = [
     favorite: 1,
     rating: "2.8",
     price: 73,
+    quantity: 13,
   },
   {
     id: 26,
@@ -322,6 +348,7 @@ const data = [
     favorite: 0,
     rating: "3.0",
     price: 52,
+    quantity: 14,
   },
   {
     id: 27,
@@ -334,6 +361,7 @@ const data = [
     favorite: 0,
     rating: "1.0",
     price: 168,
+    quantity: 16,
   },
   {
     id: 28,
@@ -346,6 +374,7 @@ const data = [
     favorite: 0,
     rating: "2.0",
     price: 146,
+    quantity: 17,
   },
   {
     id: 29,
@@ -358,6 +387,7 @@ const data = [
     favorite: 0,
     rating: "0.1",
     price: 126,
+    quantity: 19,
   },
   {
     id: 30,
@@ -370,6 +400,7 @@ const data = [
     favorite: 1,
     rating: "2.4",
     price: 168,
+    quantity: 12,
   },
   {
     id: 31,
@@ -382,6 +413,7 @@ const data = [
     favorite: 0,
     rating: "2.0",
     price: 197,
+    quantity: 10,
   },
   {
     id: 32,
@@ -394,6 +426,7 @@ const data = [
     favorite: 1,
     rating: "0.6",
     price: 38,
+    quantity: 10,
   },
   {
     id: 33,
@@ -406,6 +439,7 @@ const data = [
     favorite: 0,
     rating: "4.1",
     price: 158,
+    quantity: 13,
   },
   {
     id: 34,
@@ -418,6 +452,7 @@ const data = [
     favorite: 1,
     rating: "2.2",
     price: 126,
+    quantity: 12,
   },
   {
     id: 35,
@@ -430,6 +465,7 @@ const data = [
     favorite: 0,
     rating: "1.9",
     price: 22,
+    quantity: 15,
   },
 ];
 export default data;

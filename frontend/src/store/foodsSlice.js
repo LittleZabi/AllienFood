@@ -7,7 +7,7 @@ const initialState = {
   status: "idle",
   error: null,
 };
-
+const restore = () => {};
 export const getFoods = createAsyncThunk("api/getItems", async () => {
   try {
     const response = await axios.get("/app/foods/");
