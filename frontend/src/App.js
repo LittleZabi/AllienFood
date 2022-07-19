@@ -3,6 +3,7 @@ import Footer from "./app/screens/footer";
 import HomeScreen from "./app/screens/home-screen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./app/screens/product-view";
+import { CartScreen } from "./app/screens/cartScreen";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
-            <Route path="/product/:id/:name" element={<HomeScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
           </Routes>
         </main>
         <Footer />

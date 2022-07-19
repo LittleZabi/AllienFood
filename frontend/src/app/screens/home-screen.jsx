@@ -5,12 +5,11 @@ import RenderItem from "../components/product-render";
 import Message from "../components/message";
 import { useSelector, useDispatch } from "react-redux";
 import { foodsAll, foodsError, foodsStatus, getFoods, getFood, fetchFood } from '../../store/foodsSlice'
-import { useParams } from "react-router-dom";
 import Product from "./product-view";
 const HomeScreen = () => {
     const [loading, setLoading] = useState(false);
     const [items, setItems] = useState(null)
-    const [error, setError] = useState(null)
+    const [message, setMessage] = useState(false)
     const _foods = useSelector(foodsAll)
     const _foodsStatus = useSelector(foodsStatus)
     const _foodsError = useSelector(foodsError)
@@ -27,7 +26,7 @@ const HomeScreen = () => {
         } else if (_foodsStatus === 'idle') {
             dispatch(getFoods());
         } else if (_foodsStatus === 'error') {
-            setError({ type: 'error', message: _foodsError })
+            setMessage({ type: 'error', message: _foodsError })
             setLoading(false)
         } else if (_foodsStatus === 'pending' && viewItemRequest === 0) {
             setItemLoad(true)
@@ -36,7 +35,6 @@ const HomeScreen = () => {
             setItems(_foods)
             setLoading(false)
         } else if (viewItemRequest === 1 && _foodsStatus === 'complete') {
-
             setViewItem(itemDetails)
             setItemLoad(false)
         }
@@ -46,6 +44,7 @@ const HomeScreen = () => {
         setViewItem(null)
     }
     const handleViewItem = (id) => {
+        setMessage(false)
         setViewItemReq(1)
         setItemLoad(true)
         dispatch(fetchFood(id))
@@ -53,9 +52,9 @@ const HomeScreen = () => {
     return (
         <div className="row center items page-size">
             {
-                viewItemRequest && <Product item={viewItem} handleCloseModel={handleCloseModel} loading={itemLoad} />
+                viewItemRequest && <Product item={viewItem} handleCloseModel={handleCloseModel} setMessage={setMessage} loading={itemLoad} />
             }
-            {error && <Message variant={error.type}>{error.message}</Message>}
+            {message && <Message handleClose={() => setMessage(false)} variant={message.type} message={message.message} />}
             {loading && <Loading limit={8} />}
             {!loading &&
                 items && items.map((item, index) => {
@@ -63,8 +62,8 @@ const HomeScreen = () => {
                         colors[Math.ceil(Math.random() * (colors.length - 1))];
                     return (
                         <RenderItem
+                            key={index}
                             index={index}
-                            key={item["id"]}
                             item={item}
                             bgColor={color}
                             handleViewItem={handleViewItem}

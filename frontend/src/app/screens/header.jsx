@@ -1,5 +1,8 @@
-
+import { cartItemsAll } from '../../store/cartSlice'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 const Header = () => {
+    const cartItems = useSelector(cartItemsAll)
     return (
         <header className="row page-size fading" style={{ backgroundImage: "url('/images/sara-dubler-i4z0t.jpg')", color: 'blue' }}>
 
@@ -9,14 +12,18 @@ const Header = () => {
                         AllienFood <i className="fas fa-mug-hot"></i>
                     </a>
                 </div>
+                <div className='search-bar'>
+                    <input type="text" placeholder='Search in your favourite Restaurant...' name="" id="" />
+                    <i className="fa fa-search"></i>
+                </div>
                 <div>
-                    <a href="cart.html" className="cart">
+                    <Link to="/cart" className="cart">
                         <i className="fa fa-cart-shopping"></i>
-                        <span className="badge">999</span>
-                    </a>
-                    <a href="siginin.html" className="user-btn">
+                        <span className="badge">{cartItems.length}</span>
+                    </Link>
+                    <Link to="/signIn" className="user-btn">
                         <i className="fa fa-user"></i>Sign in
-                    </a>
+                    </Link>
                 </div>
             </nav>
         </header>)

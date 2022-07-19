@@ -3,14 +3,14 @@ const RenderItem = ({ item, bgColor, index, handleViewItem }) => {
     return (
         <div className="card fading" style={{ animationDelay: index * 100 + 'ms' }}>
             <span className="image-sec" >
-                <img onClick={() => handleViewItem(item['id'])}
+                <img onClick={() => handleViewItem(item['_id'])}
                     className="medium"
                     src={"/images/" + item["image"]}
                     alt={item["name"]}
                 />
             </span>
             <div className="card-body">
-                <span className="item-name" onClick={() => handleViewItem(item['id'])}>
+                <span className="item-name" onClick={() => handleViewItem(item['_id'])}>
                     <h2>{item["name"].replace("-", " ")}</h2>
                 </span>
                 {<Stars rating={item["rating"]} />}
