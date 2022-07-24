@@ -413,7 +413,7 @@ const data = [
     comments: 889,
     rating: "2.0",
     price: 197,
-    stock: 10,
+    stock: 13,
   },
   {
     name: "sam moghadam",
