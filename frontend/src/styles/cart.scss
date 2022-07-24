@@ -1,5 +1,4 @@
 .cart-view {
-  margin-top: 316px;
   z-index: 1;
   & .inner-view {
     background-color: white;
@@ -23,8 +22,8 @@
       background: #fae9e3;
     }
     & img {
-      max-width: 136px;
-      max-height: 136px;
+      max-width: 220px;
+      max-height: 150px;
       object-fit: cover;
     }
     & div {
@@ -98,13 +97,56 @@
   & .cart-title {
     width: 100%;
     display: block;
-    text-align: right;
+    text-align: center;
     & span {
-      background: #e91e63;
-      display: inline;
+      color: #e91e63;
+      display: inline-block;
       padding: 5px 15px;
       border-radius: 27px;
+      background: #00000014;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 7px;
+    }
+    & a {
+      background: #9c27b0;
+      padding: 8px 14px;
+      border-radius: 3px;
       color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  & .timestamp {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000ab;
+    margin-left: 0 !important;
+    font-style: italic;
+  }
+  & .title-bar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 8px;
+  }
+  .sort-btn {
+    width: 100%;
+    & button {
+      border: none;
+      background: none;
+      margin: 0 6px;
+      cursor: pointer;
+      transition: 200ms;
+      &:hover {
+        color: #e91e63;
+      }
+      &.active {
+        color: #e91e63;
+      }
+      & i {
+        font-size: 18px;
+      }
     }
   }
 }

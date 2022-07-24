@@ -2,16 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  cart: [
-    // {
-    //   id: 1,
-    //   name: "fake item",
-    //   quantity: 3,
-    //   price: 20,
-    //   maxQuantity: 10,
-    //   image: "raimond-klavins-s75g5.jpg",
-    // },
-  ],
+  cart: localStorage.getItem("alienfoodCart")
+    ? JSON.parse(localStorage.getItem("alienfoodCart"))
+    : [],
   error: null,
   status: "idle",
 };
@@ -57,9 +50,9 @@ const cartSlice = createSlice({
     },
 
     addItemToCart(state, action) {
-      console.log(action.payload);
       let item = state.cart.filter((e) => e.id !== action.payload.id);
       state.cart = [...item, action.payload];
+      localStorage.setItem("alienfoodCart", JSON.stringify(state.cart));
       state.status = "Added";
     },
   },

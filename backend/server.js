@@ -13,11 +13,12 @@ mongoose.connect("mongodb://localhost/alienfood", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-app.use("/app/users", userRouter);
-app.use("/app/foods", foodsRouter);
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/app/users", userRouter);
+app.use("/app/foods", foodsRouter);
 app.get("/", (req, res) => {
   res.send("Server is working");
 });

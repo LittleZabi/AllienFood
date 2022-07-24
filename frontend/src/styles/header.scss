@@ -5,6 +5,15 @@ header {
   background-size: cover;
   border-radius: 0 0 10px 10px;
   overflow: hidden;
+
+  & a.brand {
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: "Yellowtail", cursive;
+    margin: 0;
+    display: block;
+  }
   &.page-size {
     width: 100%;
   }
@@ -16,14 +25,14 @@ header {
     height: 100%;
     backdrop-filter: blur(3px);
     & div {
-      margin: 20px;
+      margin: 0 20px;
     }
   }
   & .cart {
     font-size: 27px;
-    margin-right: 20px;
+    margin-right: 3px;
     & i {
-      background: #00000073;
+      background: #000000bf;
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -31,22 +40,64 @@ header {
       align-items: center;
       justify-content: center;
       transition: 200ms;
+      border: 2px solid transparent;
       &:hover {
         background: #0000004a;
+        border: 2px solid #0003;
       }
-    }
-  }
-  & .user-btn {
-    background: #000000b3;
-    border-radius: 5px;
-    transition: 200ms;
-    &:hover {
-      background: #0000004a;
     }
   }
   & .fa-user {
     font-size: 18px;
     margin-right: 5px;
+  }
+  & .dropdown,
+  & .user-btn {
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+    margin: 20px 9px 5px 0px;
+    background: #000000b3;
+    border-radius: 5px;
+    transition: 200ms;
+    display: inline-flex;
+    min-width: 100px;
+    max-width: 200px;
+    border: 2px solid transparent;
+    &:hover {
+      background: #00000086;
+      border: 2px solid #0003;
+    }
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    & .menu {
+      display: flex;
+      flex-direction: column;
+      display: none;
+      list-style: none;
+      padding: 0;
+      & a {
+        font-weight: bold;
+        &:hover {
+          color: orangered;
+        }
+      }
+    }
+
+    &:hover > ul.menu {
+      display: block;
+    }
+  }
+  & .user-btn {
+    flex-direction: row;
+    min-width: unset;
+    max-width: unset;
+  }
+  .kxnw {
+    // margin-top: 5px;
   }
 }
 .search-bar {
@@ -58,6 +109,7 @@ header {
   justify-content: space-between;
   overflow: hidden;
   border-radius: 42px;
+  margin-top: 9px;
   & i {
     font-size: 30px;
     margin-right: 14px;

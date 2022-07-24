@@ -1,0 +1,72 @@
+.form {
+  background: white;
+  max-width: 400px;
+  margin: auto;
+  padding: 10px 20px;
+  box-shadow: 1px 3px 7px 1px #0000003b;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px;
+  }
+  & input[type="text"],
+  & input[type="password"] {
+    padding: 10px;
+    width: 80%;
+    margin: 5px 0;
+    border: 1px solid #0000ff45;
+    border-radius: 3px;
+    height: 23px;
+    font-size: 15px;
+    font-family: $p-fonts;
+    font-weight: bold;
+  }
+  & .label {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-top: 7px;
+    font-weight: bold;
+  }
+  & input[type="submit"],
+  & button {
+    padding: 0;
+    margin: 0;
+    height: 41px;
+    font-size: 18px;
+    width: 201px;
+    border: none;
+    background: #e91e63;
+    border-radius: 27px;
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 8px;
+    font-family: $p-fonts;
+    cursor: pointer;
+    transition: 200ms;
+    &:hover {
+      background: #cd265f;
+    }
+  }
+  & .flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    & span {
+      margin-left: 7px;
+    }
+  }
+  & .not-have-account {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0000009c;
+    & a {
+      color: #e91e63;
+    }
+  }
+}

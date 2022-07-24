@@ -1,7 +1,9 @@
 import Stars from "./stars"
 const RenderItem = ({ item, bgColor, index, handleViewItem }) => {
     return (
-        <div className="card fading" style={{ animationDelay: index * 100 + 'ms' }}>
+        <div className="card fading" style={{ animationDelay: index * 100 + 'ms' }} style={{
+            borderColor: bgColor,
+        }}>
             <span className="image-sec" >
                 <img onClick={() => handleViewItem(item['_id'])}
                     className="medium"
@@ -25,22 +27,8 @@ const RenderItem = ({ item, bgColor, index, handleViewItem }) => {
                     Restaurant: #{item["restID"]}{" "}
                 </span>
             </div>
-            <div
-                className="toolkit"
-                style={{
-                    background: bgColor,
-                }}
-            >
-                <span>
-                    <i className="fa fa-heart-circle-check heart"></i>
-                    <i className="fa fa-message cmnt"></i>
-                    <span className="badge">
-                        {item["comments"] > 999 ? "999+" : item["comments"]}
-                    </span>
-                    <i className="fa fa-cart-plus cart"></i>
-                </span>
-            </div>
-        </div>
+
+        </div >
     )
 }
 export default RenderItem

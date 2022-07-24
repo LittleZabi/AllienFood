@@ -17,8 +17,6 @@ const HomeScreen = () => {
     const [viewItem, setViewItem] = useState(null)
     const [itemLoad, setItemLoad] = useState(false)
     const dispatch = useDispatch();
-
-
     const itemDetails = useSelector(getFood)
     useEffect(() => {
         if (_foodsStatus === 'pending' && viewItemRequest === 0) {
@@ -52,7 +50,7 @@ const HomeScreen = () => {
     return (
         <div className="row center items page-size">
             {
-                viewItemRequest && <Product item={viewItem} handleCloseModel={handleCloseModel} setMessage={setMessage} loading={itemLoad} />
+                viewItemRequest ? <Product item={viewItem} handleCloseModel={handleCloseModel} setMessage={setMessage} loading={itemLoad} /> : ''
             }
             {message && <Message handleClose={() => setMessage(false)} variant={message.type} message={message.message} />}
             {loading && <Loading limit={8} />}

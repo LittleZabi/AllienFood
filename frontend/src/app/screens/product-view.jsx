@@ -12,7 +12,7 @@ const Product = ({ item, loading, handleCloseModel, setMessage }) => {
         setQty(qty + (op))
     }
     const cartStatus = useSelector(cartItemStatus)
-    const addToCart = item => dispatch(addItemToCart({ id: item['_id'], name: item['name'], image: item['image'], price: item['price'], stock: item['stock'], quantity: qty }))
+    const addToCart = item => dispatch(addItemToCart({ id: item['_id'], name: item['name'], image: item['image'], price: item['price'], stock: item['stock'], quantity: qty, createdAt: new Date().toJSON() }))
     useEffect(() => {
         if (cartStatus === 'Added') {
             setMessage({ type: 'success', message: 'Item added successfully in cart!' })

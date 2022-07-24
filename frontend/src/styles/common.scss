@@ -27,9 +27,29 @@ header {
   grid-area: header;
   background-color: #203040;
 }
+.loading-spinner {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #00000030;
+  border-bottom-color: #f0a;
+  border-radius: 50%;
+  margin: 10px;
+  animation: spinner 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards
+    infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 main {
   grid-area: main;
   padding: 1rem;
+  z-index: 1;
+  margin-top: 158px;
 }
 footer {
   grid-area: footer;
@@ -67,16 +87,6 @@ header a {
   color: white;
   padding: 1rem;
 }
-a.brand {
-  color: #ffffff;
-  font-size: 3rem;
-  font-weight: bold;
-  font-family: "Yellowtail", cursive;
-}
-.row.center.items,
-.product-view {
-  margin-top: 163px;
-}
 .row.center {
   justify-content: center;
 }
@@ -95,13 +105,13 @@ img.medium {
   object-fit: cover;
 }
 .card {
-  border: 0.1rem #e7edff solid;
   background-color: #ffffff;
-  border-radius: 1.5rem;
+  border-radius: 12px;
   margin: 1rem;
   box-shadow: 0 0 11px 1px #0000002b;
   overflow: hidden;
   width: 288px;
+  border: 3px solid white;
 }
 .card-body {
   position: relative;
@@ -117,37 +127,11 @@ img.medium {
   align-items: center;
   justify-content: space-between;
 }
-.card .toolkit {
-  padding: 7px 0;
-  background: #efcfcf;
-}
-.card .toolkit i {
-  font-size: 22px;
-  /* background: blue; */
-  display: inline-block;
-  padding: 5px 10px;
-}
-.card .toolkit span {
-  text-align: center;
-  display: block;
-}
-.card .toolkit {
-  cursor: pointer;
-}
 .rating-text {
   display: inline-block;
   font-size: 12px;
   margin: 3px 7px;
   text-shadow: 0 0 2px black;
-}
-.card .toolkit i.heart {
-  color: #ff0047;
-}
-.card .toolkit i.cmnt {
-  color: #33444b;
-}
-.card .toolkit i.cart {
-  color: #1572bc;
 }
 .card-body a h2 {
   padding: 0;
@@ -173,6 +157,7 @@ img.medium {
   height: 30px;
   border-radius: 50%;
   color: #2b3438;
+  margin-right: 5px;
 }
 .items {
   align-items: flex-start;
@@ -428,9 +413,14 @@ span.badge {
   z-index: 1;
   font-weight: bold;
   letter-spacing: 1px;
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   border-radius: 4px;
   min-width: 200px;
+  left: 0;
+  right: 0;
+  max-width: 400px;
+  margin: auto;
 }
 .message-box span.close {
   font-size: 25px;
