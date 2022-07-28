@@ -5,6 +5,12 @@ const initialState = {
   cart: localStorage.getItem("alienfoodCart")
     ? JSON.parse(localStorage.getItem("alienfoodCart"))
     : [],
+  shippingAddress: localStorage.getItem("shippingAddress")
+    ? JSON.parse(localStorage.getItem("shippingAddress"))
+    : null,
+  paymentMethod: localStorage.getItem("payment-method")
+    ? localStorage.getItem("payment-method")
+    : null,
   error: null,
   status: "idle",
 };
@@ -32,6 +38,14 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    setPaymentMethod(state, action) {
+      state.paymentMethod = action.payload;
+      localStorage.setItem("payment-method", action.payload);
+    },
+    saveShippingAddress(state, action) {
+      state.shippingAddress = action.payload;
+      localStorage.setItem("shippingAddress", JSON.stringify(action.payload));
+    },
     removeItemFromCart(state, action) {
       const id = action.payload;
       const items = state.cart.filter((e) => e.id !== id);
@@ -82,10 +96,14 @@ const cartSlice = createSlice({
 });
 export const cartItemsAll = (state) => state.cart.cart;
 export const cartItemStatus = (state) => state.cart.status;
+export const getShippingAddress = (state) => state.cart.shippingAddress;
+export const getPaymentMethod = (state) => state.cart.paymentMethod;
 export const {
   addItemToCart,
   resetStatus,
   updateQtyOnSpecific,
   removeItemFromCart,
+  saveShippingAddress,
+  setPaymentMethod,
 } = cartSlice.actions;
 export default cartSlice.reducer;

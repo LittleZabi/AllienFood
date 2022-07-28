@@ -19,7 +19,6 @@ export const getFoods = createAsyncThunk("api/getItems", async () => {
 export const fetchFood = createAsyncThunk("api/getItem", async (id) => {
   try {
     let response = await axios.get("/app/foods/" + id);
-
     return response.data;
   } catch (error) {
     return error.message;

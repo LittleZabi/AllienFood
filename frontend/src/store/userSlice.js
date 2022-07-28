@@ -36,6 +36,8 @@ const userSlice = createSlice({
       state.status = "idle";
       localStorage.removeItem("alienfood");
       localStorage.removeItem("alienfoodCart");
+      localStorage.removeItem("payment-method");
+      localStorage.removeItem("shippingAddress");
     },
   },
   extraReducers(builder) {
