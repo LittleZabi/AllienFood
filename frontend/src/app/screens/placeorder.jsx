@@ -1,19 +1,27 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { CheckOutSteps } from '../components/checkout-steps'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/message'
-import { setPaymentMethod as setPayMethod, getShippingAddress, cartItemsAll, getPaymentMethod } from '../../store/cartSlice'
-import { CartScreen } from './cartScreen'
+import { getShippingAddress, cartItemsAll, getPaymentMethod, flushCart } from '../../store/cartSlice'
+import { createOrder, getOrderError, getOrderItem, getOrderStatus } from '../../store/orderSlice'
+import { getUser } from '../../store/userSlice'
 export const PlaceorderScreen = () => {
     const items = useSelector(cartItemsAll)
     const paymentMethod = useSelector(getPaymentMethod)
     const shippingAddress = useSelector(getShippingAddress)
+    const user = useSelector(getUser);
     const [prices, setPrices] = useState({})
     const [message, setMessage] = useState(false)
+    const [loading, setLoading] = useState(false)
+
     const dispatch = useDispatch()
     const navigate = useNavigate();
+    const orderStatus = useSelector(getOrderStatus)
+    const orderItems = useSelector(getOrderItem)
+    const orderError = useSelector(getOrderError)
+
     useEffect(() => {
         if (!paymentMethod || !shippingAddress || !shippingAddress.address) {
             navigate('/payment')
@@ -32,7 +40,20 @@ export const PlaceorderScreen = () => {
         const r = { items: filterPrice(total), totalPrice: filterPrice(total + tax + shipping), tax: filterPrice(tax * total), shipping }
         setPrices(r)
     }
+    const placeOrderHandler = () => {
+        dispatch(createOrder({ cart: [...items], user: user && user.user }))
+        // dispatch(flushCart())
+    }
+    console.log(orderError, orderStatus)
+    useEffect(() => {
+        if (orderStatus === 'pending') setLoading(true)
+        if (orderStatus === 'error') {
+            setLoading(false)
+            console.log(orderError)
+            // setMessage()
+        }
 
+    }, [])
     return (
         <> {
             shippingAddress && shippingAddress.address &&
@@ -110,7 +131,7 @@ export const PlaceorderScreen = () => {
                                     </tr>
                                 </tbody>
                             </table>
-                            <button>Place order</button>
+                            <button onClick={placeOrderHandler}>Place order 1</button>
                         </div>
                     </div>
                 </div>

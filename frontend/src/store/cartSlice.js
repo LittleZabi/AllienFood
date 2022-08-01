@@ -55,6 +55,10 @@ const cartSlice = createSlice({
       state.status = "idle";
       state.error = null;
     },
+    flushCart(state, action) {
+      state.cart = [];
+      localStorage.removeItem("alienfoodCart");
+    },
     updateQtyOnSpecific(state, action) {
       const { qty, index, max } = action.payload;
       const crntQty = state.cart[index].quantity;
@@ -105,5 +109,6 @@ export const {
   removeItemFromCart,
   saveShippingAddress,
   setPaymentMethod,
+  flushCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
