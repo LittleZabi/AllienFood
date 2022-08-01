@@ -16,7 +16,7 @@ export const PlaceorderScreen = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (!paymentMethod || !shippingAddress || !shippingAddress.address) {
-            navigate('/shipping')
+            navigate('/payment')
         }
         CalculatePrices()
     }, [])
@@ -31,7 +31,6 @@ export const PlaceorderScreen = () => {
         shipping = total > 100 ? filterPrice(0) : filterPrice(10)
         const r = { items: filterPrice(total), totalPrice: filterPrice(total + tax + shipping), tax: filterPrice(tax * total), shipping }
         setPrices(r)
-        console.log(prices)
     }
 
     return (

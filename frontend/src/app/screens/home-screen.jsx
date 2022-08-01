@@ -53,7 +53,7 @@ const HomeScreen = () => {
                 viewItemRequest ? <Product item={viewItem} handleCloseModel={handleCloseModel} setMessage={setMessage} loading={itemLoad} /> : ''
             }
             {message && <Message handleClose={() => setMessage(false)} variant={message.type} message={message.message} />}
-            {loading && <Loading limit={8} />}
+            {loading && <Loading limit={4} />}
             {!loading &&
                 items && items.map((item, index) => {
                     let color =

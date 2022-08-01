@@ -1,12 +1,11 @@
 // const express = require("express");
 import express from "express";
-import data from "./data.js";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routers/userRouter.js";
 import foodsRouter from "./routers/foodsRouter.js";
-
+import orderRouter from "./routers/orderRouter.js";
 dotenv.config();
 const app = express();
 mongoose.connect("mongodb://localhost/alienfood", {
@@ -19,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/app/users", userRouter);
 app.use("/app/foods", foodsRouter);
+app.use("/app/order", orderRouter);
 app.get("/", (req, res) => {
   res.send("Server is working");
 });

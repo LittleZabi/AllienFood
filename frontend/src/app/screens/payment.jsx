@@ -20,7 +20,6 @@ export const PaymentsScreen = () => {
         e.preventDefault();
         dispatch(setPayMethod(paymentMethod))
         navigate('/placeorder')
-
     }
     return (
         <> {
