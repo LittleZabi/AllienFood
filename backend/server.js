@@ -19,13 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/app/users", userRouter);
 app.use("/app/foods", foodsRouter);
 app.use("/app/order", orderRouter);
+
 app.get("/", (req, res) => {
   res.send("Server is working");
-});
-
-app.post("/app/set-cart/", (req, res) => {
-  console.log(req.body);
-  res.send("success");
 });
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });

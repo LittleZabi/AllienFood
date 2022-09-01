@@ -4,13 +4,22 @@ import Order from "../models/orderModel.js";
 import { isAuth } from "../utils.js";
 
 const orderRouter = express.Router();
-
+orderRouter.get(
+  "/:slug",
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    console.log(req.params, res);
+    const order = await Order.findById(req.params.slug);
+    if (order) res.send(order);
+    else res.status(404).send({ message: "Order not found" });
+  })
+);
 orderRouter.post(
   "/",
   isAuth,
   expressAsyncHandler(async (req, res) => {
     if (req.body.orderItems.length === 0) {
-      res.status(400).send({ message: "Cart is empty" });
+      res.status(400).send({ message: "Your cart is empty add something!" });
     } else {
       const order = new Order({
         orderItems: req.body.orderItems,
@@ -20,7 +29,7 @@ orderRouter.post(
         shippingPrice: req.body.shippingPrice,
         taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
-        user: req.user._id,
+        user: req.body.user._id,
       });
       const createdOrder = await order.save();
       res

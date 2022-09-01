@@ -23,8 +23,11 @@ export const isAuth = (req, res, next) => {
       token,
       process.env.JWT_SECRET || "defaultsecret",
       (err, decode) => {
+        console.log(err.message);
         if (err) {
-          res.status(401).send({ message: "Invalid Token" });
+          res
+            .status(401)
+            .send({ message: "Invalid Token: Login again to fix the issue" });
         } else {
           res.user = decode;
           next();
