@@ -1,12 +1,13 @@
 // const express = require("express");
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routers/userRouter.js";
 import foodsRouter from "./routers/foodsRouter.js";
 import orderRouter from "./routers/orderRouter.js";
-dotenv.config();
+import random from "./get-random.js";
+
 const app = express();
 mongoose.connect("mongodb://localhost/alienfood", {
   useNewUrlParser: true,
@@ -19,6 +20,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/app/users", userRouter);
 app.use("/app/foods", foodsRouter);
 app.use("/app/order", orderRouter);
+app.get("/app/config/flutterwave/", (req, res) => {
+  const pub_key = process.env.FLUTTERWAVE_PUBLIC_KEY || "sb"; // sb -> sandbox
+  let k = { pub_key, trx_id: random(20) };
+  res.send(k);
+});
 
 app.get("/", (req, res) => {
   res.send("Server is working");

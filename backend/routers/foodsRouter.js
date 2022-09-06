@@ -4,7 +4,7 @@ import data from "../data.js";
 import expressAsyncHandler from "express-async-handler";
 const foodsRouter = express.Router();
 foodsRouter.get(
-  "/seed123",
+  "/seed",
   expressAsyncHandler(async (req, res) => {
     await Foods.remove({});
     const createFoods = await Foods.insertMany(data);

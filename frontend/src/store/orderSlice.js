@@ -17,9 +17,13 @@ export const createOrder = createAsyncThunk("create/order", async (order) => {
     };
   }
 });
-export const getOrder = createAsyncThunk("get/order", async (slug) => {
+export const getOrder = createAsyncThunk("get/order", async (order) => {
   try {
-    const r = await axios.get(`/app/order/${slug}`);
+    const r = await axios.get(`/app/order/${order.slug}`, {
+      headers: {
+        Authorization: `Bearer ${order.user.token}`,
+      },
+    });
     return { message: null, order: r.data, error: null };
   } catch (error) {
     return {

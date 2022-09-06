@@ -2,12 +2,18 @@
   background: white;
   box-shadow: 0 0 11px 1px #0000002b;
   border-radius: 3px;
-  margin-top: -84px;
+  margin-top: -23px;
   width: 93%;
   border-radius: 7px;
   overflow: hidden;
+
   & .payment {
     display: flex;
+    & div {
+      background: #0000ff0d;
+      border-radius: 6px;
+      border: 1px solid #0000ff17;
+    }
     & .label {
       cursor: pointer;
       user-select: none;

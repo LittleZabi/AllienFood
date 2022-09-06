@@ -8,7 +8,6 @@ orderRouter.get(
   "/:slug",
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    console.log(req.params, res);
     const order = await Order.findById(req.params.slug);
     if (order) res.send(order);
     else res.status(404).send({ message: "Order not found" });

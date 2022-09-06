@@ -29,9 +29,17 @@ const Header = ({ cartItems, user }) => {
                                     Menu <i className="fa fa-caret-down"></i>
                                 </Link>
                                 <ul className='menu'>
+                                    <div className='arrow-up'>
+                                        <span className='span'></span>
+                                    </div>
                                     <li>
                                         <Link to="/shipping">
                                             Shipping
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/logout">
+                                            Logout
                                         </Link>
                                     </li>
                                 </ul>

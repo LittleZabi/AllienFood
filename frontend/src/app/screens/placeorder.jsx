@@ -6,6 +6,7 @@ import Message from '../components/message'
 import { getShippingAddress, cartItemsAll, getPaymentMethod, flushCart, resetStatus } from '../../store/cartSlice'
 import { clearOrder, createOrder, getOrderItem, getOrderStatus } from '../../store/orderSlice'
 import { getUser } from '../../store/userSlice'
+import FlutterwaveBtn from "../components/flutterwave-icon"
 export const PlaceorderScreen = () => {
     const items = useSelector(cartItemsAll)
     const paymentMethod = useSelector(getPaymentMethod)
@@ -89,8 +90,12 @@ export const PlaceorderScreen = () => {
                                     <div className='section fading'>
                                         <span className='title'>Selected Payment Method</span>
                                         <span className='payment'>
-
-                                            <i className={`fab fa-${paymentMethod.toLowerCase()}`}></i> {paymentMethod}
+                                            {
+                                                paymentMethod === 'Flutterwave' ?
+                                                    <FlutterwaveBtn />
+                                                    : paymentMethod === 'PayPal' ? <><i className="fab fa-paypal" ></i> {paymentMethod}</> :
+                                                        paymentMethod === 'Stripe' ? <> <i className="fab fa-stripe"></i>  {paymentMethod}</> : ''
+                                            }
                                         </span>
 
                                     </div>

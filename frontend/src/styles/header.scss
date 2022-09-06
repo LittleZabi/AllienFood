@@ -64,6 +64,7 @@ header {
     min-width: 100px;
     max-width: 200px;
     border: 2px solid transparent;
+    position: relative;
     &:hover {
       background: #00000086;
       border: 2px solid #0003;
@@ -74,13 +75,40 @@ header {
       justify-content: space-around;
     }
     & .menu {
+      width: 200px;
+      position: absolute;
+      background: #000000;
+      top: 38px;
+      right: 3px;
       display: flex;
       flex-direction: column;
-      display: none;
       list-style: none;
       padding: 0;
+      border-radius: 3px;
+      box-shadow: 5px 5px 6px 0px #0000002e;
+      display: none;
+      & .arrow-up {
+        width: 100%;
+        height: 20px;
+        margin-top: -12px;
+        margin-right: 0px;
+        display: block;
+        float: right;
+        & .span {
+          width: 27px;
+          height: 27px;
+          background-color: black;
+          display: block;
+          border-radius: 2px;
+          margin-top: 6px;
+          transform: rotate(45deg);
+          float: right;
+          margin-right: 33px;
+        }
+      }
       & a {
         font-weight: bold;
+        color: rgb(255, 255, 255);
         &:hover {
           color: orangered;
         }
