@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/app/users", userRouter);
 app.use("/app/foods", foodsRouter);
 app.use("/app/order", orderRouter);
+
 app.get("/app/config/flutterwave/", (req, res) => {
   const pub_key = process.env.FLUTTERWAVE_PUBLIC_KEY || "sb"; // sb -> sandbox
   let k = { pub_key, trx_id: random(20) };
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
   res.send("Server is working");
 });
 app.use((err, req, res, next) => {
+  console.log("error caused:  ", err.message);
   res.status(500).send({ message: err.message });
 });
 const PORT = process.env.PORT || 5000;

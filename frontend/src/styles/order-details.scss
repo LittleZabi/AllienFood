@@ -84,18 +84,23 @@
     & span {
       width: 166px;
       display: inline-block;
+      margin: 16px 6px;
       &.paid-status {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 17px;
-        padding-top: 5px;
-        padding-bottom: 9px;
+        font-weight: 500;
+        font-size: 14px;
+        font-style: italic;
+        padding: 5px 9px;
+        border-radius: 3px;
       }
       &.danger {
         color: #e91e63 !important;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: #ff572214;
       }
       &.success {
-        color: #2196f3 !important;
+        background: #00ff001f;
+        color: #e91e63cf !important;
       }
     }
   }

@@ -13,6 +13,8 @@ import SignUp from "./app/screens/signup";
 import { Shipping } from "./app/screens/shipping";
 import { PaymentsScreen } from "./app/screens/payment";
 import { PlaceorderScreen } from "./app/screens/placeorder";
+import OrderHistory from "./app/screens/order-history";
+import Profile from "./app/screens/profile";
 function App() {
   const cartItems = useSelector(cartItemsAll);
   const { user } = useSelector(getUser);
@@ -20,6 +22,9 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <Header user={user} cartItems={cartItems} />
+        <div className="bg-image">
+          <img src="/media/images/anna-peipina-2j9hu.jpg" />
+        </div>
         <main>
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
@@ -31,6 +36,11 @@ function App() {
             <Route path="/logout" element={<SignOut />} />
             <Route path="/shipping" element={<Shipping user={user} />} />
             <Route path="/payment" element={<PaymentsScreen />} />
+            <Route path="/profile" element={<Profile user={user} />} />
+            <Route
+              path="/order-history"
+              element={<OrderHistory user={user} />}
+            />
             <Route
               path="/placeorder"
               element={<PlaceorderScreen user={user} />}

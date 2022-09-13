@@ -47,6 +47,12 @@ const orderSchema = new mongoose.Schema(
       ref: "Users",
       required: true,
     },
+    paymentResult: {
+      id: String,
+      status: String,
+      transaction_id: String,
+      email_address: String,
+    },
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     isDelivered: { type: Boolean, default: false },

@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 const Header = ({ cartItems, user }) => {
     return (
-        <header className="row page-size fading" style={{ backgroundImage: "url('/images/sara-dubler-i4z0t.jpg')", color: 'blue' }}>
+        <header className="row page-size fading">
 
             <nav className="page-size">
                 <div>
@@ -35,6 +35,16 @@ const Header = ({ cartItems, user }) => {
                                     <li>
                                         <Link to="/shipping">
                                             Shipping
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/profile">
+                                            Profile
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/order-history">
+                                            My Orders
                                         </Link>
                                     </li>
                                     <li>

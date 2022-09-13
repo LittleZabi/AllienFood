@@ -1,5 +1,6 @@
 node_modules
 build
-images
-
+/media/
+/frontend/public/media/
 .env
+.vscode

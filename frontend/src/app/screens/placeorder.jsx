@@ -44,9 +44,9 @@ export const PlaceorderScreen = () => {
         !loading && dispatch(createOrder({ orderItems: items, user: user ? user.user : {}, shippingAddress, paymentMethod, itemsPrice: prices.items, shippingPrice: prices.shipping, taxPrice: prices.tax, totalPrice: prices.totalPrice }))
     }
     useEffect(() => {
-        if (orderStatus === 'pending') setLoading(true)
-        if (orderStatus !== 'pending') setLoading(false)
-        if (orderStatus === 'complete') {
+        if (orderStatus === 'order_pending') setLoading(true)
+        if (orderStatus !== 'order_pending') setLoading(false)
+        if (orderStatus === 'order_complete') {
             if (orderItems.error) setMessage({ type: 'danger', message: orderItems.error })
             if (orderItems.message) setMessage({ type: 'alert', message: orderItems.message })
             if (orderItems.order) {

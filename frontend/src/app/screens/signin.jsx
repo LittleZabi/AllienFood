@@ -1,10 +1,9 @@
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser, getUserError, getUserStatus, signIn } from "../../store/userSlice"
-import LoadingSpin from '../components/loading-spin'
+import { getUser, getUserStatus, signIn } from "../../store/userSlice"
 import Message from '../components/message'
-const SignIn = (props) => {
+const SignIn = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null)
@@ -36,8 +35,8 @@ const SignIn = (props) => {
         if (userDetails.status && userDetails.status === 200) {
             setMessage({ type: 'success', message: `User logged successfully! Redirecting to ${redirect === '/' ? 'Foods Menu' : redirect}` })
             setTimeout(() => {
-                navigate(redirect === '/' ? redirect : '/' + redirect)
-            }, 1000);
+                window.location.href = redirect === '/' ? redirect : '/' + redirect
+            }, 800);
         } else if (userDetails.status && userDetails.status === 401) {
             setMessage({ type: 'error', message: `error ${401} Unauthorized user. email or password is incorrect!` })
         }
@@ -48,22 +47,31 @@ const SignIn = (props) => {
                 message && <Message handleClose={() => setMessage(false)} message={message.message} variant={message.type} />
             }
             <div className="mt-x fading">
-                <form className="form" onSubmit={handleForm}>
-                    <span className="title">Login into your account</span>
-                    <span className="label">Enter your Email address</span>
-                    <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Enter address..." />
-                    <span className="label">Enter your Password.</span>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter password..." />
-                    {
-                        loading === true ? <LoadingSpin /> : <input type="submit" value="Login" />
-                    }
-
-                    <div className="flex">
-                        <input type="checkbox" className="submit" defaultChecked />
-                        <span>keep logged</span>
+                <div className='container page-size fading profile sign-in'>
+                    <div className='left bg' style={{ backgroundImage: 'url(/media/images/masimo-grabar-oj63j.jpg)' }}>
                     </div>
-                    <span className="not-have-account">Not have any account <Link to={`/signup?redirect=${redirect}`}>Register now!</Link></span>
-                </form>
+                    <div className='right'>
+
+                        <div className='right-profile'>
+                            <h3>Sign In</h3>
+                            <form onSubmit={handleForm}>
+                                <div className="flex">
+                                    <i className="fa fa-envelope"></i>
+                                    <label htmlFor="email">Email</label>
+                                    <input onChange={(e) => setEmail(e.target.value)} type="email" id='email' placeholder='eg. johndoe@example.com' />
+                                </div>
+                                <div className="flex">
+                                    <i className="fa fa-lock"></i>
+                                    <label htmlFor="password">Password</label>
+                                    <input onChange={(e) => setPassword(e.target.value)} type="password" id='password' placeholder='eg. your password' />
+                                </div>
+                                <button type="submit" disabled={loading}>{loading ? "Loading..." : "Login Now"}</button>
+                                <input type="reset" value="Reset All" />
+                                <span className="account-status">Not have any account <Link to={`/signup?redirect=${redirect}`}>create now!</Link></span>
+                            </form>
+                        </div>
+                    </div>
+                </div >
             </div>
         </>)
 }

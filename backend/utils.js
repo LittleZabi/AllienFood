@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken";
+import multer from "multer";
+import { MEDIA_STORE } from "./constants.js";
 
 export const generateToken = (user) => {
   return jwt.sign(
@@ -28,7 +30,7 @@ export const isAuth = (req, res, next) => {
             .status(401)
             .send({ message: "Invalid Token: Login again to fix the issue" });
         } else {
-          res.user = decode;
+          req.user = decode;
           next();
         }
       }
@@ -37,3 +39,15 @@ export const isAuth = (req, res, next) => {
     res.status(401).send({ message: "No Token" });
   }
 };
+
+export const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, MEDIA_STORE + "/users/");
+  },
+  filename: function (req, file, cb) {
+    let extension = file.originalname.split(".");
+    extension = extension[extension.length - 1];
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + "-" + uniqueSuffix + "." + extension);
+  },
+});

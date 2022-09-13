@@ -28,7 +28,7 @@ const Product = ({ item, loading, handleCloseModel, setMessage }) => {
                 item != null && item['_id'] ? <>
                     <div className="fading item" style={{ background: '#eaf5ff' }}>
                         <div className="left">
-                            <img src={"/images/" + item.image} alt="" />
+                            <img src={"/media/images/" + item.image} alt="" />
                             {<Stars rating={item["rating"]} />}
                         </div>
                         <div className="right">

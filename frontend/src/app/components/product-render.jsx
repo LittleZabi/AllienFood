@@ -1,13 +1,13 @@
 import Stars from "./stars"
 const RenderItem = ({ item, bgColor, index, handleViewItem }) => {
     return (
-        <div className="card fading" style={{ animationDelay: index * 100 + 'ms' }} style={{
+        <div className="card fading" style={{
             borderColor: bgColor,
         }}>
             <span className="image-sec" >
                 <img onClick={() => handleViewItem(item['_id'])}
                     className="medium"
-                    src={"/images/" + item["image"]}
+                    src={"/media/images/" + item["image"]}
                     alt={item["name"]}
                 />
             </span>

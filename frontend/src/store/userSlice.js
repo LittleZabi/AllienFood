@@ -20,12 +20,42 @@ export const signIn = createAsyncThunk("user/get", async (userAuth) => {
 });
 export const signUp = createAsyncThunk("user/signup", async (userInfo) => {
   try {
-    const response = await axios.post("/app/users/signup", userInfo);
-    return { status: 200, user: response.data };
+    const response = await axios.post("/app/users/signup", userInfo, {
+      headers: {
+        "Content-type": "multipart/form-data",
+      },
+    });
+    localStorage.setItem("alienfood", JSON.stringify(response.data));
+    return {
+      status: 200,
+      user: response.data,
+      message: response.data.message ? response.data.message : null,
+    };
   } catch (error) {
     return { status: 401, user: null, error: error.message };
   }
 });
+export const updateProfile = createAsyncThunk(
+  "user/update",
+  async (userInfo) => {
+    try {
+      const response = await axios.post("/app/users/update", userInfo, {
+        headers: {
+          "Content-type": "multipart/form-data",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      localStorage.setItem("alienfood", JSON.stringify(response.data));
+      return {
+        status: 200,
+        user: response.data,
+        message: response.data.message ? response.data.message : null,
+      };
+    } catch (error) {
+      return { status: 401, user: null, error: error.message };
+    }
+  }
+);
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -62,6 +92,17 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(signUp.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.status = "complete";
+      })
+      .addCase(updateProfile.pending, (state, action) => {
+        state.status = "pending";
+      })
+      .addCase(updateProfile.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.payload;
+      })
+      .addCase(updateProfile.fulfilled, (state, action) => {
         state.user = action.payload;
         state.status = "complete";
       });
